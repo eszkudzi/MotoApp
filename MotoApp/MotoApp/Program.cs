@@ -1,5 +1,5 @@
 ﻿using MotoApp;
-var stack = new BasicStack();
+var stack = new BasicStack<double>();
 stack.Push(4.5);
 stack.Push(43);
 stack.Push(333.6);
@@ -12,3 +12,6 @@ while (stack.Count >0)
     Console.WriteLine($"Item: {item}");
     sum += item;
 }
+
+var stackString = new BasicStack<string>();
+stackString.Push("Company");
