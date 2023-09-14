@@ -7,3 +7,4 @@ employeeRepository.Add(new Employee { FirstName = "Piotr" });
 employeeRepository.Add(new Employee { FirstName = "Adam" });
 
 employeeRepository.Save();
+
