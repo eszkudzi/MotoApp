@@ -2,14 +2,28 @@
 
 namespace MotoApp.Repositories
 {
-    public class GenericRepository<T> where T: IEntity
+    public class GenericRepository<TEntity, TKey> 
+        where TEntity : class, IEntity, new()
+        where TKey: struct
     {
-        private readonly List<T> _items = new();
+        public TEntity CreateNewItem()
+        {
+            return new TEntity();
+        }
+        public TKey? Key { get; set; }
 
-        public void Add(T item)
+        protected readonly List<TEntity> _items = new();
+
+        public void Add(TEntity item)
         {
             item.Id = _items.Count + 1;
             _items.Add(item);
+        }
+
+        public TEntity GetById(int id)
+        {
+            return default(TEntity);
+            //return _items.Single(item => item.Id == id);
         }
 
         public void Save()
@@ -18,12 +32,6 @@ namespace MotoApp.Repositories
             {
                 Console.WriteLine(item);
             }
-        }
-
-        public T GetById(int id)
-        {
-            return _items.Single(item => item.Id == id);
-
         }
     }
 }
