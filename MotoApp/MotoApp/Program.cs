@@ -1,10 +1,15 @@
 ﻿using MotoApp.Entities;
 using MotoApp.Repositories;
+using MotoApp.Data;
 
-var employeeRepository = new GenericRepository<Employee, Guid>();
-employeeRepository.Add(new Employee { FirstName = "Ewa"});
-employeeRepository.Add(new Employee { FirstName = "Piotr" });
-employeeRepository.Add(new Employee { FirstName = "Adam" });
+var sqlRepository = new SqlRepository(new MotoAppDbContext());
 
-employeeRepository.Save();
+sqlRepository.Add(new Employee { FirstName = "Ewa" });
+sqlRepository.Add(new Employee { FirstName = "Piotr" });
+sqlRepository.Add(new Employee { FirstName = "Adam" });
+
+sqlRepository.Save();
+
+var emp = sqlRepository.GetById(1);
+Console.WriteLine(emp.ToString());
 
