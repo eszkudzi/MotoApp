@@ -4,6 +4,12 @@ using MotoApp.Repositories;
 using MotoApp.Repositories.Extensions;
 
 var employeeRepository = new SqlRepository<Employee>(new MotoAppDbContext(), EmployeeAdded);
+employeeRepository.ItemAdded += EmployeeRepositoryOnItemAdded;
+
+void EmployeeRepositoryOnItemAdded(object? sender, Employee e)
+{
+    Console.WriteLine($"Employee added => {e.FirstName} from {sender?.GetType().Name}");
+}
 
 AddEmployees(employeeRepository);
 WriteAllToConsole(employeeRepository);

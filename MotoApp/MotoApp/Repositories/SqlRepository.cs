@@ -3,7 +3,6 @@ using MotoApp.Entities;
 
 namespace MotoApp.Repositories
 {
-    //public delegate void ItemAdded<in T>(T item);
     public class SqlRepository<T> : IRepository<T> where T : class, IEntity, new()
     {
         private readonly DbSet<T> _dbSet;
@@ -16,6 +15,8 @@ namespace MotoApp.Repositories
             _dbSet = _dbContext.Set<T>();
             _itemAddedCallback = itemAddedCallback;
         }
+
+        public event EventHandler<T>? ItemAdded;
 
         public IEnumerable<T> GetAll()
         {
@@ -31,6 +32,7 @@ namespace MotoApp.Repositories
         {
             _dbSet.Add(item);
             _itemAddedCallback?.Invoke(item);
+            ItemAdded?.Invoke(this, item);
         }
 
         public void Remove(T item)
