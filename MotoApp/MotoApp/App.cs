@@ -37,5 +37,24 @@ namespace MotoApp
                 Console.WriteLine(item);
             }
         }
+
+
+        public static List<Car> GenerateSampleCars()
+        {
+            return new List<Car>
+            {
+                new Car
+                {
+                    Id = 680,
+                    Name = "Car 1",
+                    Color = "Black",
+                    StandardCost = 1059.31M,
+                    ListPrice = 1431.50M,
+                    Type = "Audi",
+                    NameLength = 1,
+                    TotalSales = 10000
+                }
+            };
+        }
     }
 }
