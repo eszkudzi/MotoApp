@@ -1,4 +1,5 @@
-﻿using MotoApp.Entities;
+﻿using MotoApp.DataProviders;
+using MotoApp.Entities;
 using MotoApp.Repositories;
 
 namespace MotoApp
@@ -6,10 +7,15 @@ namespace MotoApp
     internal class App : IApp
     {
         private readonly IRepository<Employee> _employeesRepository;
+        private readonly IRepository<Car> _carsRepository;
+        private readonly ICarsProvider _carsProvider;
 
-        public App(IRepository<Employee> employeesRepository)
+
+        public App(IRepository<Employee> employeesRepository, IRepository<Car> carsRepository, ICarsProvider carsProvider)
         {
             _employeesRepository = employeesRepository;
+            _carsRepository = carsRepository;
+            _carsProvider = carsProvider;
         }
 
         public void Run()
@@ -36,6 +42,20 @@ namespace MotoApp
             {
                 Console.WriteLine(item);
             }
+
+            //cars
+            var cars = GenerateSampleCars();
+            foreach (var car in cars)
+            {
+                _carsRepository.Add(car);
+            }
+
+            //carsProviders
+            foreach (var car in _carsProvider.FilterCars(1000))
+            {
+                Console.WriteLine(car);
+            }
+
         }
 
 

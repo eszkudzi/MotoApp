@@ -26,12 +26,62 @@ namespace MotoApp.DataProviders
             return list;
         }
 
+        public List<string> GetUniqueCarColors()
+        {
+            var cars = _carsRepository.GetAll();
+            List<string> list = new();
+            foreach (var car in cars)
+            {
+                if (!list.Contains(car.Color))
+                {
+                    list.Add(car.Color);
+                }
+            }
+
+            return list;
+        }
+
         public decimal GetMinimumPriceOfAllCars()
+        {
+            var cars = _carsRepository.GetAll();
+            decimal ret = decimal.MaxValue;
+            foreach (var car in cars)
+            {
+                if (car.ListPrice < ret)
+                {
+                    ret = car.ListPrice;
+                }
+            }
+
+            return ret;
+        }
+
+        public List<Car> GetSpecificColumns()
         {
             throw new NotImplementedException();
         }
 
-        public List<string> GetUniqueCarColors()
+        public string AnonymousClass()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Car> OrderByName()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Car> OrderByNameDescending()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Car> OrderByColorAndName()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Car> OrderByColorAndNameDesc()
         {
             throw new NotImplementedException();
         }
