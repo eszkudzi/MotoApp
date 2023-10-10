@@ -85,5 +85,90 @@ namespace MotoApp.DataProviders
         {
             throw new NotImplementedException();
         }
+
+        public List<Car> WhereStartsWith(string prefix)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Car> WhereStartsWithAndCostIsGreatherThan(string prefix, decimal cost)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Car> WhereColorIs(string color)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Car FirstByColor(string color)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Car? FirstOrDefaultByColor(string color)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Car FirstOrDefaultByColorWithDefault(string color)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Car LastByColor(string color)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Car SingleById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Car? SingleOrDefaultById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Car> TakeCars(int howMany)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Car> TakeCars(Range range)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Car> TakeCarsWhileNameStartsWith(string prefix)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Car> SkipCars(int howMany)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Car> SkipCarsWhileNameStartsWith(string prefix)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<string> DistinctAllColors()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Car> DistinctByColors()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Car[]> ChunkCars(int size)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
